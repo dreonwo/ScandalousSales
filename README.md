@@ -69,8 +69,8 @@ A comparison app used to display products and their differing prices from variou
 [Add picture of your hand sketched wireframes in this section]
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="main_screen" width=600>
-<img src="item_screen" width=600>
+<img src="main_screen.png" width=600>
+<img src="item_screen.png" width=600>
 
 ### [BONUS] Interactive Prototype
 
