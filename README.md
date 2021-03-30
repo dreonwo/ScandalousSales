@@ -1,4 +1,4 @@
-# **Cheap Sheep** by Monica Howze, Aaron Holloman & Dreon Wheatley-Owens
+# **Scandalous Sales** by Monica Howze, Aaron Holloman & Dreon Wheatley-Owens
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -8,7 +8,7 @@
 
 ## Overview
 ### Description
-A comparison app used to display products and their differing prices from various retail locations.
+A comparison app used to display products and their differing prices from various grocery locations.
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
@@ -26,44 +26,37 @@ A comparison app used to display products and their differing prices from variou
 **Required Must-have Stories**
 
 * User can view products online
-* User can sort items by category
-* Swipe to refresh item list
 * Allow user to scan barcodes and get results for multiple stores.
-* Create History of scanned items
-* Give navigation to nearby locations for a specific store
-* Search bar for finding items by text search
 
 **Optional Nice-to-have Stories**
 
-* User can tap item to see item availability
+* User can sort items by category
+* Create History of scanned items
+    * Swipe to refresh item list
+* Give navigation to nearby locations for a specific store
+* Search bar for finding items by text search
 
 ### 2. Screen Archetypes
-* Stream(Home Feed)
-   * User can view products online User can view items tha they have already scanned previously on the history screen.
-* Detail(Item choose)
-    * User can tap item to see longer item description User can see image of item, name of item, various pricing for item, a button that leads to navigation of the closest location for the desired retail price.
-* Detail(Retail choose)
-    * After User chooses a specific retail location with the desired price they will have the option to be led to the website with the item or given navigation to the nearest location for the retailer.
-* History
-    * Displays recent items previously scanned or searched
+* Camera
+    * User can scan product barcodes and tap image of product to be redirected to a detailed screen with the prices of different grocery stores.
+* Stream(Results Feed)
+   * User can view products online.
+* Stream(History Feed)
+   * User can view products online. User can view items that they have already scanned previously on the history screen.
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* Home Feed
 * Camera
-* Search Products
+* Search Results
 * History
 
 **Flow Navigation** (Screen to Screen)
 
-* Home Feed
-   * Detail Screen(Item choose)
-   * Detail Screen(Retail choose)
 * Camera
-   * Detail Screen(Item choose)
-   * Detail Screen(Retail choose)
+    * Product Screen -> Results Feed
+* History
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
