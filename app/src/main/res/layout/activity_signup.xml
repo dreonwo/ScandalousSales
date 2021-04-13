@@ -35,11 +35,22 @@
         android:id="@+id/btnSignup"
         android:layout_width="217dp"
         android:layout_height="47dp"
+<<<<<<< HEAD
         android:layout_below="@+id/etLastName"
+=======
+        android:layout_below="@id/etLastName"
+>>>>>>> f81da8ae3f3a370795d0416febb411018972da4c
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
+<<<<<<< HEAD
         android:layout_marginStart="88dp"
         android:layout_marginTop="9dp"
         android:text="Signup"
         tools:text="Signup" />
+=======
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="3dp"
+        android:text="Signup" />
+>>>>>>> f81da8ae3f3a370795d0416febb411018972da4c
 </RelativeLayout>

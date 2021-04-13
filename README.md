@@ -69,29 +69,32 @@ A comparison app used to display products and their differing prices from variou
 [Add picture of your hand sketched wireframes in this section]
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="main_screen.png" width=600>
-<img src="item_screen.png" width=600>
+<img src="Scandalous Sales.png" width=600>
 
 ### [BONUS] Interactive Prototype
 
 ## Schema 
 [This section will be completed in Unit 9]
+
 ### Models
 
-#### Search Results
+#### User
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
-   | itemId        | String   | unique id for each product |
-   | keyWord       | String   |word(s) used to pull search|
-   | image         | File     | image for product |
-   | itemPrice     | Int      | price of item |
+   | UserId        | String   | Word(s) used to pull search|
+   | FirstName     | String   | User's first name |
+   | LastName      | String   | User's last name |
+   | Username      | String   | 
+   | Password      | String   |
+   | userRating    | Int      | Number signifying the authenticity of a user (1-5)
    
-#### History
+#### Posts
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
-   | itemId        | String   | unique id for each product |
+   | itemName      | String   | name of product |
    | image         | File     | image for product |
-   | itemPrice     | Int      | price of item |
+   | itemPrice     | Int      | price of product |
+   
    
 ### Networking
 | 
@@ -108,8 +111,8 @@ A comparison app used to display products and their differing prices from variou
       - Query Time of fetched results
       - 
 #### [OPTIONAL:] Existing API Endpoints
-##### Walmart API
-- Base URL - [https://rapidapi.com/apidojo/api/walmart](https://rapidapi.com/apidojo/api/walmart)
+##### Google Maps API
+- Base URL - [https://developers.google.com/maps/gmp-get-started](https://developers.google.com/maps/gmp-get-started)
 
    HTTP Verb | Endpoint | Description
    ----------|----------|------------

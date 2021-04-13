@@ -28,9 +28,13 @@
         android:layout_marginStart="98dp"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="3dp"
+<<<<<<< HEAD
         android:text="Login"
         android:textColor="#FFFFFF"
         tools:text="Login" />
+=======
+        android:text="Login" />
+>>>>>>> f81da8ae3f3a370795d0416febb411018972da4c
 
     <Button
         android:id="@+id/btnSignup"
