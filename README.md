@@ -69,7 +69,7 @@ A comparison app used to display products and their differing prices from variou
 [Add picture of your hand sketched wireframes in this section]
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="Scandalous-Sales.png" width=600>
+<img src="Scandalous Sales.png" width=600>
 
 ### [BONUS] Interactive Prototype
 
