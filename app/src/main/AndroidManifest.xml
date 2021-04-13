@@ -13,13 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScandalousSales">
-<<<<<<< HEAD
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".LoginActivity">
-=======
-        <activity android:name=".History"></activity>
-        <activity android:name=".MainActivity">
->>>>>>> f81da8ae3f3a370795d0416febb411018972da4c
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
