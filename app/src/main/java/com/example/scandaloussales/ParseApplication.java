@@ -1,8 +1,9 @@
 package com.example.scandaloussales;
 
-import android.app.Activity;
+import android.app.Application;
+import com.parse.Parse;
 
-public class ParseApplication extends Activity {
+public class ParseApplication extends Application {
 
     public void onCreate() {
         super.onCreate();
