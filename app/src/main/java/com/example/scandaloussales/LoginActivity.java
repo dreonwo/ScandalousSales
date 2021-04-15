@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(tag, "Issue with login", e);
                     return;
                 }
-
                 goMainActivity();
                 Toast.makeText(LoginActivity.this, "Success Login", Toast.LENGTH_SHORT).show();
             }
@@ -72,9 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goMainActivity() {
-
         Intent i = new Intent(this, MainActivity.class);
-
         startActivity(i);
         finish();
     }
