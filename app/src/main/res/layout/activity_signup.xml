@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etUPC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username" />
@@ -14,7 +14,7 @@
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etUsername"
+        android:layout_below="@id/etUPC"
         android:hint="Password" />
 
     <EditText
