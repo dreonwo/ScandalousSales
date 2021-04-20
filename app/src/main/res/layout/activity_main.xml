@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -27,48 +29,21 @@
         android:text="Search" />
     -->
 
-    <SearchView
-        android:id="@+id/search_bar"
+
+    <FrameLayout
+        android:id="@+id/flContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="-4dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="4dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search for item:"></SearchView>
+        android:layout_height="match_parent"
 
-    <ListView
-        android:id="@+id/list_item"
-        android:layout_margin="2dp"
+        />
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
-
-    <TextView
-        android:id="@+id/etResults"
-        android:layout_width="389dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search_bar"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="41dp"
-        android:ems="10"
-        android:textColor="#D7000000"
-        android:textSize="16sp"
-        tools:text="Community's Recently Scanned Items:" />
-
-    <Button
-        android:id="@+id/btnScanItem"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
-        android:text="Scan Item" />
-
-
+        app:menu="@menu/menu_bottom_navigation" />
 
 </RelativeLayout>
