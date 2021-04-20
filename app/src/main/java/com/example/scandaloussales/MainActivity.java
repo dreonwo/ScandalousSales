@@ -8,13 +8,11 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.util.Log;
 import android.widget.Toast;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-=======
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +24,6 @@ import android.widget.Toast;
 import com.example.scandaloussales.fragments.ComposeFragment;
 import com.example.scandaloussales.fragments.PostsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
->>>>>>> 9f1879ef47265425d2676001f9b61dca2772bc83
 
 public class MainActivity extends AppCompatActivity {
     //private Button btnScanItem;
@@ -46,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-<<<<<<< HEAD
-=======
         //getSupportActionBar().setTitle("Community's Scanned Items");
 
         bottomNavigationView = findViewById(R.id.bottomNavigation);
@@ -104,6 +99,5 @@ public class MainActivity extends AppCompatActivity {
         //Inflate the menu; this adds items to the aciton bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
->>>>>>> 9f1879ef47265425d2676001f9b61dca2772bc83
     }
 }
