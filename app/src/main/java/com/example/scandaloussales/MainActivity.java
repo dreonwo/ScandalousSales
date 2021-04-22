@@ -30,11 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static final String TAG = "MainActivity";
-    //1FFF. WARNING: MOVED capture image axtivity request code, etDescription,
-    //btncaptureimage, ivpostimage, btnsubmit, photoFile and photoFileName to composefragment
+
 
     final FragmentManager fragmentManager = getSupportFragmentManager();
-    //1BBB.
     private BottomNavigationView bottomNavigationView;
 
 
@@ -43,17 +41,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //getSupportActionBar().setTitle("Community's Scanned Items");
-
         bottomNavigationView = findViewById(R.id.bottomNavigation);
 
-        //1GGG. moved btncaptureimage & btnsubmit methods to composefragment
 
-        //1CCC. add a click listener on bottom navigatiuon view
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                //1DDD. added from 'using with fragments' portion of bottom nav view guide
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:

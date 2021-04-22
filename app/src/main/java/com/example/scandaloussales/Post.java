@@ -52,5 +52,5 @@ public class Post extends ParseObject {
         return getString(KEY_UPC);
     }
 
-    public void setUpc(int upc){put(KEY_UPC, upc);}
+    public void setUpc(long upc){put(KEY_UPC, upc);}
 }
