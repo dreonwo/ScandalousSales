@@ -11,6 +11,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -50,8 +51,7 @@ public class ComposeFragment extends Fragment {
     private Button btnLogout;
     private Button btnPost;
     public EditText etResults;
-
-
+    FragmentManager fragmentManager;
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -66,6 +66,7 @@ public class ComposeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        fragmentManager = getActivity().getSupportFragmentManager();
 
         return inflater.inflate(R.layout.fragment_compose, container, false);
     }
@@ -108,7 +109,10 @@ public class ComposeFragment extends Fragment {
 
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(itemName, price, upc, currentUser, photoFile);
+
                 Toast.makeText(getContext(), "Post Successfully Created", Toast.LENGTH_SHORT).show();
+
+                fragmentManager.beginTransaction().replace(R.id.flContainer, new PostsFragment()).commit();
 
             }
         });

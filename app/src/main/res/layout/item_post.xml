@@ -32,6 +32,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif"
         android:hint="Price"
+        android:textColor="#0B0A0A"
         android:textSize="18sp" />
 
     <TextView
