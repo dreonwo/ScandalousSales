@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.scandaloussales.MainActivity;
 import com.example.scandaloussales.Post;
 import com.example.scandaloussales.PostsAdapter;
 import com.example.scandaloussales.R;
@@ -47,20 +49,16 @@ public class PostsFragment extends Fragment {
 
         rvPosts = view.findViewById(R.id.rvPosts);
         allPosts = new ArrayList<>();
-        //Steps to use the recycler view:
-        //0. create layout for one row in the list
-        //1. create the adapter
         adapter = new PostsAdapter(getContext(), allPosts);
-        //2. create the data source
-        //3. set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
-        //4. set the layout manager on the recycler view
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         queryPosts();
+
     }
 
-    private void queryPosts() {
+    public void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_ITEM_NAME);
         query.include(Post.KEY_USER);
         query.setLimit(20);
         query.addDescendingOrder(Post.KEY_CREATED_KEY);
@@ -74,12 +72,17 @@ public class PostsFragment extends Fragment {
                 }
 
                 for(Post post: posts){
-                    Log.i(TAG, "Post: " + post.getItemName() + ", price: " + post.getPrice() + ", upc " + post.getUpc());
+                    Log.i(TAG, "Post: " + post.getItemName() + ", price: " + post.getPrice() + ", upc " + post.getUPC() + ", username: " + post.getUser().getUsername());
                 }
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
+
+                String objectID = "" + getId();
+                
             }
         });
+
+
     }
 
 }
