@@ -1,6 +1,7 @@
 package com.example.scandaloussales;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,8 +62,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         }
 
         public void bind(Post post) {
-            tvPrice.setText(post.getPrice());
+            Log.d("PostsAdapter", post.toString());
+
+            tvPrice.setText("" + post.getPrice());
             tvProductName.setText(post.getItemName());
+            tvUpc.setText(""  + post.getUpc());
             // tvTimestamp.setText("" + post.getCreatedAt());
             ParseFile image = post.getImage();
             if(image != null){

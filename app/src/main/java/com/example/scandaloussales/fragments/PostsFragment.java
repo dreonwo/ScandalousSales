@@ -47,14 +47,8 @@ public class PostsFragment extends Fragment {
 
         rvPosts = view.findViewById(R.id.rvPosts);
         allPosts = new ArrayList<>();
-        //Steps to use the recycler view:
-        //0. create layout for one row in the list
-        //1. create the adapter
         adapter = new PostsAdapter(getContext(), allPosts);
-        //2. create the data source
-        //3. set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
-        //4. set the layout manager on the recycler view
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         queryPosts();
     }
