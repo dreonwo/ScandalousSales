@@ -13,7 +13,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="4dp"
         android:layout_marginTop="5dp"
-        android:text="Enter product details:" />
+        android:fontFamily="casual"
+        android:text="Enter product details:"
+        android:textColor="#000000"
+        android:textSize="14sp" />
 
     <ImageView
         android:id="@+id/ivPostImage"
@@ -54,6 +57,7 @@
         android:layout_marginStart="-1dp"
         android:layout_marginTop="270dp"
         android:layout_marginEnd="0dp"
+        android:fontFamily="casual"
         android:hint="Product Name" />
 
     <EditText
@@ -66,6 +70,7 @@
         android:layout_marginStart="-3dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="2dp"
+        android:fontFamily="casual"
         android:hint="Price" />
 
     <EditText
@@ -79,6 +84,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="-3dp"
+        android:fontFamily="casual"
         android:hint="UPC" />
 
     <Button
@@ -92,15 +98,6 @@
         android:layout_marginTop="446dp"
         android:layout_marginBottom="32dp"
         android:text="Post Product Listing" />
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:backgroundTint="@color/black"
-        android:text="Logout" />
-
 
 
 </RelativeLayout>

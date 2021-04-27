@@ -4,46 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_margin="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="0dp"
     tools:context=".MainActivity">
-
-    <!--
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="259dp"
-        android:layout_height="39dp"
-        android:layout_marginEnd="51dp"
-        android:layout_toStartOf="@+id/btnSearch"
-        android:hint="Enter item to search" />
-
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="8dp"
-        android:text="Search" />
-    -->
-
 
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         />
-
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="#D54E4B"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="#FFFFFF"
         app:menu="@menu/menu_bottom_navigation" />
 
 </RelativeLayout>

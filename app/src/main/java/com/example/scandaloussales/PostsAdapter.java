@@ -49,6 +49,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvProductName;
         private TextView tvPrice;
         private TextView tvUpc;
+        private TextView tvUsername;
         //private TextView tvTimestamp;
         private ImageView ivImage;
 
@@ -57,6 +58,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvProductName = itemView.findViewById(R.id.tvProductName);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvUpc = itemView.findViewById(R.id.tvUPC);
+            tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             //tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
         }
@@ -67,6 +69,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvPrice.setText("" + post.getPrice());
             tvProductName.setText(post.getItemName());
             tvUpc.setText(""  + post.getUpc());
+            tvUsername.setText(post.getUser().getUsername());
             // tvTimestamp.setText("" + post.getCreatedAt());
             ParseFile image = post.getImage();
             if(image != null){
