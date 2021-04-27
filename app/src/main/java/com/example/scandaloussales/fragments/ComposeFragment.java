@@ -30,6 +30,14 @@ import android.widget.Toast;
 import com.example.scandaloussales.MainActivity;
 import com.example.scandaloussales.Post;
 import com.example.scandaloussales.R;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -54,6 +62,9 @@ public class ComposeFragment extends Fragment {
     FragmentManager fragmentManager;
     private File photoFile;
     public String photoFileName = "photo.jpg";
+
+    private SupportMapFragment mapFragment;
+
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -182,6 +193,41 @@ public class ComposeFragment extends Fragment {
                 ivPostImage.setImageResource(0);
             }
         });
+    }
+
+    protected void setUpMapIfNeeded() {
+        // Do a null check to confirm that we have not already instantiated the map.
+        if (mapFragment == null) {
+            mapFragment = ((SupportMapFragment) getSupportFragmentManager().beginTransaction()
+                    .add(R.id.flContainer, mapFragment)
+                    .commit();
+            // Check if we were successful in obtaining the map.
+            if (mapFragment != null) {
+                mapFragment.getMapAsync(new OnMapReadyCallback() {
+                    @Override
+                    public void onMapReady(GoogleMap map) {
+                        loadMap(map);
+                    }
+                });
+            }
+        }
+    }
+
+    protected void loadMap(GoogleMap googleMap) {
+        if (googleMap != null) {
+            // ... use map here
+            // Set the color of the marker to green
+            BitmapDescriptor defaultMarker =
+                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+            // listingPosition is a LatLng point
+            LatLng listingPosition = new LatLng(-33.867, 151.206);
+            // Create the marker on the fragment
+            Marker mapMarker = map.addMarker(new MarkerOptions()
+                    .position(listingPosition)
+                    .title("Some title here")
+                    .snippet("Some description here")
+                    .icon(defaultMarker));
+        }
     }
 
 }
