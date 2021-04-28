@@ -5,11 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.maps.MapView;
-
 public class PostDetail extends AppCompatActivity {
-
-    private MapView mapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
