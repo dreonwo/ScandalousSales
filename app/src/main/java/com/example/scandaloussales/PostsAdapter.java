@@ -1,15 +1,11 @@
 package com.example.scandaloussales;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +21,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     private Context context;
     private List<Post> posts;
 
-
     public PostsAdapter(Context context, List<Post> posts) {
         this.context = context;
         this.posts = posts;
@@ -35,28 +30,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
-        ImageView image = view.findViewById(R.id.ivImage);
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View view = LayoutInflater.from(context).inflate(R.layout.item_post_detail, parent, false);
-                //Note: when using intents outside of activities, use context as first parameter
-                Intent i = new Intent(context, PostDetail.class);
-                context.startActivity(i);
-            }
-        });
-
-        TextView tvUsername = view.findViewById(R.id.tvUsername);
-        tvUsername.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View view = LayoutInflater.from(context).inflate(R.layout.activity_user_detail, parent, false);
-                //Note: when using intents outside of activities, use context as first parameter
-                Intent i = new Intent(context, PostDetail.class);
-                context.startActivity(i);
-            }
-        });
-       // view = LayoutInflater.from(context).inflate(R.layout.activity_main, parent, false);
         return new ViewHolder(view);
     }
 
@@ -73,33 +46,37 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        private ImageView ivImage;
         private TextView tvProductName;
         private TextView tvPrice;
-        private TextView tvUPC;
+        private TextView tvUpc;
         private TextView tvUsername;
-
+        //private TextView tvTimestamp;
+        private ImageView ivImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivImage = itemView.findViewById(R.id.ivImage);
             tvProductName = itemView.findViewById(R.id.tvProductName);
             tvPrice = itemView.findViewById(R.id.tvPrice);
-            tvUPC = itemView.findViewById(R.id.tvUPC);
+            tvUpc = itemView.findViewById(R.id.tvUPC);
             tvUsername = itemView.findViewById(R.id.tvUsername);
+            ivImage = itemView.findViewById(R.id.ivImage);
+            //tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
         }
 
         public void bind(Post post) {
+            Log.d("PostsAdapter", post.toString());
+
+            tvPrice.setText("" + post.getPrice());
             tvProductName.setText(post.getItemName());
-            tvPrice.setText(post.getPrice());
-            tvUPC.setText(post.getUPC());
+            tvUpc.setText(""  + post.getUpc());
             tvUsername.setText(post.getUser().getUsername());
+            // tvTimestamp.setText("" + post.getCreatedAt());
             ParseFile image = post.getImage();
             if(image != null){
                 Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
-
-
             }
+
+
         }
     }
 

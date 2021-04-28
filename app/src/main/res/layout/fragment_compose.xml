@@ -26,7 +26,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="false"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="37dp"
         android:layout_marginEnd="133dp"
         android:background="#FFFFFF"
         android:visibility="visible"
@@ -41,9 +41,26 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="132dp"
-        android:layout_marginTop="205dp"
+        android:layout_marginTop="195dp"
         android:background="#FFFFFF"
         android:text="Upload Image" />
+
+
+    <EditText
+        android:id="@+id/etUPC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPrice"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="-7dp"
+        android:fontFamily="casual"
+        android:hint="UPC" />
 
     <EditText
         android:id="@+id/etProductName"
@@ -54,9 +71,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="270dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="245dp"
+        android:layout_marginEnd="-4dp"
         android:fontFamily="casual"
         android:hint="Product Name" />
 
@@ -67,25 +84,11 @@
         android:layout_below="@+id/etProductName"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="-3dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="2dp"
+        android:layout_marginEnd="-2dp"
         android:fontFamily="casual"
         android:hint="Price" />
-
-    <EditText
-        android:id="@+id/etUPC"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etPrice"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="-3dp"
-        android:fontFamily="casual"
-        android:hint="UPC" />
 
     <Button
         android:id="@+id/btnPost"
@@ -93,11 +96,30 @@
         android:layout_height="54dp"
         android:layout_below="@+id/etUPC"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="446dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="549dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginBottom="1dp"
         android:text="Post Product Listing" />
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/etUPC"
+        android:layout_marginBottom="50dp"
+        app:cameraBearing="112.5"
+        app:cameraTargetLat="-33.796923"
+        app:cameraTargetLng="150.922433"
+        app:cameraTilt="30"
+        app:cameraZoom="13"
+        app:mapType="normal"
+        app:uiCompass="false"
+        app:uiRotateGestures="false" />
+
 
 
 </RelativeLayout>

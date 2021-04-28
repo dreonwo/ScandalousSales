@@ -7,14 +7,13 @@ import com.parse.ParseUser;
 
 import java.util.Date;
 
-
 @ParseClassName("Post")
 public class Post extends ParseObject {
-    public static final String KEY_ITEM_NAME = "name";
+    public static final String KEY_ITEM_NAME = "itemName";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "userId";
     public static final String KEY_CREATED_KEY = "createdAt";
-    public static final String KEY_PRICE = "price";
+    public static final String KEY_PRICE = "itemPrice";
     public static final String KEY_UPC = "upc";
 
     public String getItemName(){
@@ -37,21 +36,21 @@ public class Post extends ParseObject {
         return getParseUser(KEY_USER);
     }
 
+    public Date getCreatedAt(){ return getDate(KEY_CREATED_KEY); }
+
     public void setUser(ParseUser user){
         put(KEY_USER, user);
     }
 
-    public String getPrice() {
-        return getString(KEY_PRICE);
+    public int getPrice() {
+        return getInt(KEY_PRICE);
     }
 
     public void setPrice(int price){ put(KEY_PRICE,price);}
 
-    public String getUPC() {
-        return getString(KEY_UPC);
+    public int getUpc() {
+        return getInt(KEY_UPC);
     }
 
-    public void setUPC(long upc){put(KEY_UPC, upc);}
-
-    public Date getCreatedAt(){ return getDate(KEY_CREATED_KEY); }
+    public void setUpc(long upc){put(KEY_UPC, upc);}
 }

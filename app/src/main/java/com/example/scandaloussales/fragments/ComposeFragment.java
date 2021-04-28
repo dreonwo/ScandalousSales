@@ -164,7 +164,7 @@ public class ComposeFragment extends Fragment {
         Post post = new Post();
         post.setItemName(name);
         post.setPrice(price);
-        post.setUPC(upc);
+        post.setUpc(upc);
         post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
