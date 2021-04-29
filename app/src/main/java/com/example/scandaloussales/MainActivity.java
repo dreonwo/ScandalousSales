@@ -57,27 +57,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        listView = findViewById(R.id.list_view);
-
-        for(int i=0; i<=100; i++){
-            stringArrayList.add("Item " + i);
-        }
-
-        adapter = new ArrayAdapter<>(MainActivity.this
-                ,android.R.layout.simple_list_item_1,stringArrayList);
-
-
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Display click item position in toast
-                Toast.makeText(getApplicationContext()
-                        ,adapter.getItem(position), Toast.LENGTH_SHORT).show();
-
-            }
-        });
+//        listView = findViewById(R.id.list_view);
+//
+//        for(int i=0; i<=100; i++){
+//            stringArrayList.add("Item " + i);
+//        }
+//
+//        adapter = new ArrayAdapter<>(MainActivity.this
+//                ,android.R.layout.simple_list_item_1,stringArrayList);
+//
+//
+//        listView.setAdapter(adapter);
+//
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                //Display click item position in toast
+//                Toast.makeText(getApplicationContext()
+//                        ,adapter.getItem(position), Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
 
         bottomNavigationView = findViewById(R.id.bottomNavigation);
