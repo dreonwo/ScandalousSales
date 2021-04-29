@@ -90,7 +90,6 @@ public class ComposeFragment extends Fragment {
         etProductName = view.findViewById(R.id.etProductName);
         etPrice = view.findViewById(R.id.etPrice);
         etUPC = view.findViewById(R.id.etUPC);
-
         btnUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,9 +197,7 @@ public class ComposeFragment extends Fragment {
     protected void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mapFragment == null) {
-            mapFragment = ((SupportMapFragment) getSupportFragmentManager().beginTransaction()
-                    .add(R.id.flContainer, mapFragment)
-                    .commit();
+            mapFragment = ((SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map));
             // Check if we were successful in obtaining the map.
             if (mapFragment != null) {
                 mapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -222,7 +219,7 @@ public class ComposeFragment extends Fragment {
             // listingPosition is a LatLng point
             LatLng listingPosition = new LatLng(-33.867, 151.206);
             // Create the marker on the fragment
-            Marker mapMarker = map.addMarker(new MarkerOptions()
+            Marker mapMarker = googleMap.addMarker(new MarkerOptions()
                     .position(listingPosition)
                     .title("Some title here")
                     .snippet("Some description here")

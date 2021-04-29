@@ -2,7 +2,6 @@ package com.example.scandaloussales;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,16 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 
-import org.parceler.Parcels;
-
 import java.util.List;
 
-public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
+public class UserPostsAdapter extends RecyclerView.Adapter<UserPostsAdapter.ViewHolder> {
 
     private Context context;
     private List<Post> posts;
 
-    public PostsAdapter(Context context, List<Post> posts) {
+    public UserPostsAdapter(Context context, List<Post> posts) {
         this.context = context;
         this.posts = posts;
     }
@@ -54,7 +51,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvPrice;
         private TextView tvUpc;
         private TextView tvUsername;
-        //private TextView tvTimestamp;
         private ImageView ivImage;
 
         public ViewHolder(@NonNull View itemView) {
@@ -79,17 +75,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             if(image != null){
                 Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
             }
-
-            tvUsername.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(context, UserDetail.class);
-                    i.putExtra("username", post.getUser().getUsername());
-                    i.putExtra("user", Parcels.wrap(post.getUser()));
-                    context.startActivity(i);
-
-                }
-            });
         }
     }
 

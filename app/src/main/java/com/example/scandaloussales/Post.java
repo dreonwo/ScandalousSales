@@ -5,6 +5,8 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 
 @ParseClassName("Post")
@@ -15,6 +17,9 @@ public class Post extends ParseObject {
     public static final String KEY_CREATED_KEY = "createdAt";
     public static final String KEY_PRICE = "itemPrice";
     public static final String KEY_UPC = "upc";
+
+    public Post() {
+    }
 
     public String getItemName(){
         return getString(KEY_ITEM_NAME);
