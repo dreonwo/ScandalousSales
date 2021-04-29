@@ -5,9 +5,17 @@
 
     <item
         android:id="@+id/search_view"
-        android:title="@string/search"
+        android:title="search"
         android:icon="@drawable/ic_search"
         app:actionViewClass="android.widget.SearchView"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_view"
+        android:dividerHeight="2dp"
+        android:divider="@color/white"
+        tools:listitem="@android:layout/simple_list_item_1"/>
 
 
 </menu>

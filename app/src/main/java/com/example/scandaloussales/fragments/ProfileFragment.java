@@ -26,7 +26,7 @@ import com.parse.ParseUser;
 
 import java.util.List;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends PostsFragment {
 
     Button btnLogout;
     ImageView ivSort;
@@ -65,7 +65,8 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-     //   getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
+        //   getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
+
     }
 
     public void logoutUser() {
@@ -74,5 +75,32 @@ public class ProfileFragment extends Fragment {
         getActivity().finish();
     }
 
+    protected void queryPosts() {
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_ITEM_NAME);
+        query.include(Post.KEY_USER);
+        query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
+        query.setLimit(20);
+        query.addDescendingOrder(Post.KEY_CREATED_KEY);
 
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+
+                for (Post post : posts) {
+                    Log.i(TAG, "Post: " + post.getItemName() + ", price: " + post.getPrice() + ", upc " + post.getUpc() + ", username: " + post.getUser().getUsername());
+                }
+                allPosts.addAll(posts);
+                adapter.notifyDataSetChanged();
+
+                String objectID = "" + getId();
+            }
+
+
+        });
+    }
 }

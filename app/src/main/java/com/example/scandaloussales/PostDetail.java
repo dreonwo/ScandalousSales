@@ -26,7 +26,7 @@ public class PostDetail extends AppCompatActivity {
         setContentView(R.layout.item_post_detail);
 
     }
-
+/*
     protected void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mapFragment == null) {
@@ -42,6 +42,7 @@ public class PostDetail extends AppCompatActivity {
             }
         }
     }
+
 
     protected void loadMap(GoogleMap googleMap) {
         if (googleMap != null) {
@@ -59,7 +60,7 @@ public class PostDetail extends AppCompatActivity {
                     .icon(defaultMarker));
         }
     }
-
+*/
     //allows user to press the back button after they view the post detail screen
     @Override
     public void onBackPressed() {
