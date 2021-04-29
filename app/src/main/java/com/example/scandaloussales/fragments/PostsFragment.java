@@ -12,11 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.example.scandaloussales.MainActivity;
 import com.example.scandaloussales.Post;
-import com.example.scandaloussales.PostsAdapter;
+import com.example.scandaloussales.Adapters.PostsAdapter;
 import com.example.scandaloussales.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
