@@ -65,7 +65,7 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
+     //   getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
     }
 
     public void logoutUser() {

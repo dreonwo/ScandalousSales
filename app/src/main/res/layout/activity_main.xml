@@ -25,4 +25,13 @@
         app:itemTextColor="#FFFFFF"
         app:menu="@menu/menu_bottom_navigation" />
 
+
+        <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_view"
+        android:dividerHeight="2dp"
+        android:divider="@color/white"
+        tools:listitem="@android:layout/simple_list_item_1"/>
+
 </RelativeLayout>
