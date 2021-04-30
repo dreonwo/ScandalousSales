@@ -72,6 +72,7 @@ A comparison app used to display products and their differing prices from variou
 <img src="Scandalous Sales.png" width=600>
 
 ### [BONUS] Interactive Prototype
+<img src="walkthrough.gif">
 
 ## Schema 
 [This section will be completed in Unit 9]
