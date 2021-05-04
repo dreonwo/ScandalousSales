@@ -6,15 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.solver.state.ConstraintReference;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -23,18 +19,14 @@ import com.example.scandaloussales.R;
 import com.example.scandaloussales.UserDetail;
 import com.parse.ParseFile;
 
-import java.util.ArrayList;
+import org.parceler.Parcels;
+
 import java.util.List;
 
-import static com.parse.Parse.getApplicationContext;
-
-public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> implements Filterable {
+public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
 
     private Context context;
     private List<Post> posts;
-    private static List<Post> postList;
-    private static List<Post> postListFull;
-
 
     public PostsAdapter(Context context, List<Post> posts) {
         this.context = context;
@@ -59,100 +51,86 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         return posts.size();
     }
 
-    public int getItem(int position) {
-        return posts.size();
-    }
-
     class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tvProductName;
         private TextView tvPrice;
         private TextView tvUpc;
+        private TextView tvUpcLabel;
+        private TextView tvUpcSign;
         private TextView tvUsername;
-        private TextView tvTimestamp;
+        private TextView tvUsernameLabel;
+        //private TextView tvTimestamp;
         private ImageView ivImage;
-        private PostsAdapter adapter;
+
+        private CardView cvPost;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvProductName = itemView.findViewById(R.id.tvProductName);
+
             tvPrice = itemView.findViewById(R.id.tvPrice);
+
             tvUpc = itemView.findViewById(R.id.tvUPC);
+            tvUpcLabel = itemView.findViewById(R.id.tvUPCLabel);
+            tvUpcSign = itemView.findViewById(R.id.tvUPCSign);
+
             tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvUsernameLabel = itemView.findViewById(R.id.tvUsernameLabel);
+
             ivImage = itemView.findViewById(R.id.ivImage);
-            tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            //tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            cvPost = itemView.findViewById(R.id.cvPost);
         }
-
-
 
         public void bind(Post post) {
             Log.d("PostsAdapter", post.toString());
 
             tvPrice.setText("" + post.getPrice());
+
             tvProductName.setText(post.getItemName());
+
             tvUpc.setText(""  + post.getUpc());
+            //tvUpc.setVisibility(View.GONE);
+            //tvUpcLabel.setVisibility(View.GONE);
+            //tvUpcSign.setVisibility(View.GONE);
+
             tvUsername.setText(post.getUser().getUsername());
+
             // tvTimestamp.setText("" + post.getCreatedAt());
             ParseFile image = post.getImage();
             if(image != null){
                 Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
             }
 
+            /*
+            tvProductName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, PostDetail.class);
+                    //i.putExtra("username", post.getUser().getUsername());
+                    //i.putExtra("user", Parcels.wrap(post.getUser()));
+                    context.startActivity(i);
+                }
+            });
+            */
+
 
             tvUsername.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(context, UserDetail.class);
-                    i.putExtra("username", post.getUser().getUsername());
-                    //i.putExtra("user", Parcels.wrap(post.getUser()));
+                    i.putExtra("user", Parcels.wrap(post.getUser()));
                     context.startActivity(i);
 
                 }
             });
+
         }
     }
-
-
-
-
 
     public void clear() {
         posts.clear();
         notifyDataSetChanged();
     }
-
-    @Override
-    public Filter getFilter() {
-        return postFilter;
-    }
-
-    private final Filter postFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            List<Post> filteredList = new ArrayList<>();
-
-            if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(postListFull);
-            }else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-
-                for (Post item : postListFull) {
-                    if (item.getItemName().toLowerCase().contains(filterPattern)){
-                        filteredList.add(item);
-                    }
-                }
-            }
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            postList.clear();
-            postList.addAll((List) results.values);
-            notifyDataSetChanged();
-        }
-    };
 }

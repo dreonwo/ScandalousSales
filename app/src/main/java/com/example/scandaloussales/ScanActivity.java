@@ -17,15 +17,15 @@ import java.time.Instant;
 
 public class ScanActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnScan;
+    Button btnUploadUPC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scan);
+        setContentView(R.layout.fragment_compose);
 
-        btnScan = findViewById(R.id.btnScan);
-        btnScan.setOnClickListener(this);
+        //btnUploadUPC = findViewById(R.id.btnUploadUPC);
+        //btnUploadUPC.setOnClickListener(this);
     }
 
     @Override

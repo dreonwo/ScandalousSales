@@ -12,13 +12,12 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_compose"
-        android:icon="@drawable/red_pencil"
+        android:icon="@drawable/pencil"
         android:title="Compose"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_log_out"
-        android:icon="@drawable/_5_1_512__1_"
-        android:title="Log Out"
-        android:visible="true"
+        android:id="@+id/action_profile"
+        android:icon="@drawable/person"
+        android:title="Profile"
         app:showAsAction="always" />
 </menu>

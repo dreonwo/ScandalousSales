@@ -56,6 +56,13 @@ public class LogOutFragment extends PostsFragment {
             }
         });
 
+        ivSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "onClick sort button");
+            }
+        });
+
 
     }
 
