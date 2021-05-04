@@ -120,7 +120,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(context, UserDetail.class);
-                    i.putExtra("username", post.getUser().getUsername());
                     i.putExtra("user", Parcels.wrap(post.getUser()));
                     context.startActivity(i);
 

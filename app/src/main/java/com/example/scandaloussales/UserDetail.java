@@ -42,7 +42,6 @@ public class UserDetail extends AppCompatActivity {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.setLimit(20);
-        Log.d(TAG, getIntent().getStringExtra("username"));
         query.whereEqualTo(Post.KEY_USER, Parcels.unwrap(getIntent().getParcelableExtra("user")));
         query.addDescendingOrder(Post.KEY_CREATED_KEY);
 

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<com.example.scandaloussales.CustomScrollView
+    android:id="@+id/scrollMap"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:fillViewport="true"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/llPostDetail"
@@ -31,12 +34,6 @@
             android:background="#FFFFFF"
             android:visibility="visible"
             app:srcCompat="@drawable/avatar_1" />
-        <!--
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-        -->
 
         <Button
             android:id="@+id/btnUploadImage"
@@ -47,18 +44,6 @@
             android:background="#FFFFFF"
             android:text="Upload Image" />
 
-            <!--
-            <Button
-                android:id="@+id/btnUploadUPC"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="10dp"
-                android:background="#FFFFFF"
-                android:clickable="true"
-                android:text="Upload UPC" />
-
-        </LinearLayout> -->
 
         <EditText
             android:id="@+id/etUPC"
@@ -90,20 +75,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:fontFamily="casual"
-            android:text="Location:"
+            android:text="Location of Item:"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+
 
         <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:layout_marginTop="15dp"
+            android:layout_below="@+id/etUPC"
+            android:layout_marginTop="28dp"
             app:cameraBearing="112.5"
-            app:cameraTargetLat="-33.796923"
-            app:cameraTargetLng="150.922433"
+            app:cameraTargetLat="28.527383"
+            app:cameraTargetLng="-81.367578"
             app:cameraTilt="30"
             app:cameraZoom="13"
             app:mapType="normal"
@@ -112,8 +100,7 @@
             app:uiScrollGestures="true"
             app:uiTiltGestures="true"
             app:uiZoomControls="false"
-            app:uiZoomGestures="true" />
-
+            app:uiZoomGestures="true"/>
 
         <Button
             android:id="@+id/btnPost"
@@ -123,6 +110,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="60dp"
             android:text="Post Product Listing" />
+
     </LinearLayout>
-</ScrollView>
+</com.example.scandaloussales.CustomScrollView>
+
 

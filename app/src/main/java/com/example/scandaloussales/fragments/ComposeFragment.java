@@ -3,6 +3,7 @@
 package com.example.scandaloussales.fragments;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,8 +13,12 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -27,13 +32,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.example.scandaloussales.Post;
+import com.example.scandaloussales.MainActivity;
 import com.example.scandaloussales.Post;
 import com.example.scandaloussales.R;
+import com.example.scandaloussales.WorkaroundMapFragment;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
@@ -41,9 +51,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -53,15 +65,15 @@ import com.parse.SaveCallback;
 import java.io.File;
 
 import static android.app.Activity.RESULT_OK;
+import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
-public class ComposeFragment extends Fragment {
+public class ComposeFragment extends Fragment implements OnMapReadyCallback{
 
     public static final String TAG = "ComposeFragment";
 
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 47;
     private ImageView ivPostImage;
     private Button btnUploadImage;
-    private Button btnUploadUPC;
     private EditText etProductName;
     private EditText etPrice;
     private EditText etUPC;
@@ -71,10 +83,12 @@ public class ComposeFragment extends Fragment {
     private File photoFile;
     public String photoFileName = "photo.jpg";
     private FusedLocationProviderClient fusedLocationClient;
-    private Location currLocation;
+    private GoogleMap mMap;
     private double lng;
     private double lat;
-
+    private static final int REQUEST_FINE_LOCATION = 200;
+    private Marker userClick;
+    private ScrollView mScrollView;
     private SupportMapFragment mapFragment;
 
 
@@ -98,23 +112,19 @@ public class ComposeFragment extends Fragment {
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnPost = view.findViewById(R.id.btnPost);
         btnUploadImage = view.findViewById(R.id.btnUploadImage);
-        //btnUploadUPC = view.findViewById(R.id.btnUploadUPC);
-
         btnLogout = view.findViewById(R.id.btnLogout);
         etProductName = view.findViewById(R.id.etProductName);
         etPrice = view.findViewById(R.id.etPrice);
         etUPC = view.findViewById(R.id.etUPC);
+        mScrollView = view.findViewById(R.id.scrollMap); //parent scrollview in xml, give your scrollview id value
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
+        fusedLocationClient = getFusedLocationProviderClient(getContext());
+
+        mapFragment = ((SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map));
+
+        mapFragment.getMapAsync(this);
 
         btnUploadImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchCamera();
-            }
-        });
-
-        btnUploadUPC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchCamera();
@@ -135,7 +145,7 @@ public class ComposeFragment extends Fragment {
 
                 //added upc length checker. upcs are always 12 numbers long.
                 if (etUPC.getText().toString().length() != 12) {
-                    Toast.makeText(getContext(), "UPC must be 12 numbers long", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "UPC must be 12 numbers long. You have " + etUPC.getText().toString().length() + " characters", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -145,7 +155,7 @@ public class ComposeFragment extends Fragment {
                 }
 
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(itemName, price, upc, currentUser, photoFile);
+                savePost(itemName, price, upc, currentUser, photoFile, lat, lng);
 
                 Toast.makeText(getContext(), "Post Successfully Created", Toast.LENGTH_SHORT).show();
 
@@ -163,16 +173,23 @@ public class ComposeFragment extends Fragment {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener((Activity) getContext(), new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            currLocation = location;
-                        }
-                    }
-                });
+
+    }
+
+    private boolean checkPermissions() {
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            requestPermissions();
+            return false;
+        }
+    }
+
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                REQUEST_FINE_LOCATION);
     }
 
     public File getPhotoFileUri(String fileName) {
@@ -215,13 +232,15 @@ public class ComposeFragment extends Fragment {
         }
     }
 
-    private void savePost(String name, int price, long upc, ParseUser currentUser, File photoFile) {
+    private void savePost(String name, int price, long upc, ParseUser currentUser, File photoFile, double latitude, double longitude) {
         Post post = new Post();
         post.setItemName(name);
         post.setPrice(price);
         post.setUpc(upc);
         post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
+        post.put("latitude", latitude);
+        post.put("longitude", longitude);
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -239,57 +258,77 @@ public class ComposeFragment extends Fragment {
         });
     }
 
-    protected void setUpMapIfNeeded() {
-        // Do a null check to confirm that we have not already instantiated the map.
-        if (mapFragment == null) {
-            mapFragment = ((SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map));
-            // Check if we were successful in obtaining the map.
-            if (mapFragment != null) {
-                mapFragment.getMapAsync(new OnMapReadyCallback() {
+    public void getLastLocation() {
+        // Get last known recent location using new Google Play Services SDK (v11+)
+        FusedLocationProviderClient locationClient = getFusedLocationProviderClient(getContext());
+
+
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            Toast.makeText(getContext(), "Permissions Not Granted ", Toast.LENGTH_SHORT).show();
+            // return;
+        }
+        locationClient.getLastLocation()
+                .addOnSuccessListener(new OnSuccessListener<Location>() {
                     @Override
-                    public void onMapReady(GoogleMap map) {
-                        loadMap(map);
+                    public void onSuccess(Location location) {
+                        // GPS location can be null if GPS is switched off
+                        if (location != null) {
+                            onLocationChanged(location);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("MapDemoActivity", "Error trying to get last GPS location");
+                        e.printStackTrace();
                     }
                 });
+    }
+
+    public void onLocationChanged(Location location) {
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(latLng).title("You are here!"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+    }
+
+
+    @SuppressLint("MissingPermission")
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        if(checkPermissions()) {
+            googleMap.setMyLocationEnabled(true);
+        }
+
+        getLastLocation();
+
+        BitmapDescriptor defaultMarker = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+
+        googleMap.setOnMapClickListener(new OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+
+                if(userClick != null)
+                    userClick.remove();
+
+                userClick = googleMap.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .title("Product Location")
+                        .snippet("This is where the product is")
+                        .icon(defaultMarker));
+
+                lng = userClick.getPosition().longitude;
+                lat = userClick.getPosition().latitude;
             }
-        }
+        });
     }
-
-    protected void loadMap(GoogleMap googleMap) {
-        if (googleMap != null) {
-            // ... use map here
-            LatLng local = new LatLng(currLocation.getLatitude(), currLocation.getLongitude());
-            CameraUpdateFactory.newLatLng(local);
-            // Set the color of the marker to green
-            BitmapDescriptor defaultMarker =
-                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
-            // listingPosition is a LatLng point
-            LatLng listingPosition = new LatLng(40.795226880162794, -74.1942775718023);
-            // Create the marker on the fragment
-            Marker mapMarker = googleMap.addMarker(new MarkerOptions()
-                    .position(listingPosition)
-                    .title("Some title here")
-                    .snippet("Some description here")
-                    .icon(defaultMarker));
-
-
-            googleMap.setOnMapClickListener(new OnMapClickListener() {
-                @Override
-                public void onMapClick(LatLng latLng) {
-
-                    Marker userClick = googleMap.addMarker(new MarkerOptions()
-                    .position(latLng)
-                    .title("Product Location")
-                    .snippet("This is where the product is")
-                    .draggable(true)
-                    .icon(defaultMarker));
-
-                    lng = latLng.longitude;
-                    lat = latLng.latitude;
-                }
-            });
-
-        }
-    }
-
 }
