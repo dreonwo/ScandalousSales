@@ -25,7 +25,8 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.example.scandaloussales.fragments.ProfileFragment;
+import com.example.scandaloussales.fragments.LogOutFragment;
+import com.example.scandaloussales.fragments.LogOutFragment;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                         fragmentManager.beginTransaction().replace(R.id.flContainer, fragment, "compose").commit();
                         break;
                     case R.id.action_profile:
-                        fragment = new ProfileFragment();
+                        fragment = new LogOutFragment();
                         fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
 
                         break;
@@ -139,31 +140,5 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //Inflate the menu; this adds items to the aciton bar if it is present.
-     //   getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_search,menu);
-        MenuItem menuItem = menu.findItem(R.id.search_view);
-        android.widget.SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //Filter Array List
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-
-        return super.onCreateOptionsMenu(menu);
     }
 }
