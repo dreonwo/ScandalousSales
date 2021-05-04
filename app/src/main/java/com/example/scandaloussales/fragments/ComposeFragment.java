@@ -89,7 +89,6 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
     private static final int REQUEST_FINE_LOCATION = 200;
     private Marker userClick;
     private ScrollView mScrollView;
-
     private SupportMapFragment mapFragment;
 
 
@@ -121,7 +120,6 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
 
         fusedLocationClient = getFusedLocationProviderClient(getContext());
 
-
         mapFragment = ((SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map));
 
         mapFragment.getMapAsync(this);
@@ -147,7 +145,7 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
 
                 //added upc length checker. upcs are always 12 numbers long.
                 if (etUPC.getText().toString().length() != 12) {
-                    Toast.makeText(getContext(), "UPC must be 12 numbers long", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "UPC must be 12 numbers long. You have " + etUPC.getText().toString().length() + " characters", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -307,15 +305,6 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-//        ((WorkaroundMapFragment) getChildFragmentManager().findFragmentById(R.id.map))
-//                .setListener(new WorkaroundMapFragment.OnTouchListener() {
-//                    @Override
-//                    public void onTouch()
-//                    {
-//                        mScrollView.requestDisallowInterceptTouchEvent(true);
-//                    }
-//                });
-
         if(checkPermissions()) {
             googleMap.setMyLocationEnabled(true);
         }
@@ -335,7 +324,6 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
                         .position(latLng)
                         .title("Product Location")
                         .snippet("This is where the product is")
-                        .draggable(true)
                         .icon(defaultMarker));
 
                 lng = userClick.getPosition().longitude;
