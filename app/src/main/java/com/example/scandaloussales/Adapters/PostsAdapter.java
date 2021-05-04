@@ -55,16 +55,26 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvProductName;
         private TextView tvPrice;
         private TextView tvUpc;
+        private TextView tvUpcLabel;
+        private TextView tvUpcSign;
         private TextView tvUsername;
+        private TextView tvUsernameLabel;
         //private TextView tvTimestamp;
         private ImageView ivImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvProductName = itemView.findViewById(R.id.tvProductName);
+
             tvPrice = itemView.findViewById(R.id.tvPrice);
+
             tvUpc = itemView.findViewById(R.id.tvUPC);
+            tvUpcLabel = itemView.findViewById(R.id.tvUPCLabel);
+            tvUpcSign = itemView.findViewById(R.id.tvUPCSign);
+
             tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvUsernameLabel = itemView.findViewById(R.id.tvUsernameLabel);
+
             ivImage = itemView.findViewById(R.id.ivImage);
             //tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
         }
@@ -73,7 +83,9 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             Log.d("PostsAdapter", post.toString());
 
             tvPrice.setText("" + post.getPrice());
+
             tvProductName.setText(post.getItemName());
+
             tvUpc.setText(""  + post.getUpc());
             tvUsername.setText(post.getUser().getUsername());
             // tvTimestamp.setText("" + post.getCreatedAt());
@@ -85,13 +97,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvUsername.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(context, UserDetail.class);
-                    i.putExtra("username", post.getUser().getUsername());
-                    i.putExtra("user", Parcels.wrap(post.getUser()));
+                    Intent i = new Intent(context, PostDetail.class);
+                    //i.putExtra("username", post.getUser().getUsername());
+                    //i.putExtra("user", Parcels.wrap(post.getUser()));
                     context.startActivity(i);
 
                 }
             });
+
         }
     }
 
