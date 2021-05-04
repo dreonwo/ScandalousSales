@@ -10,13 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.scandaloussales.MainActivity;
 import com.example.scandaloussales.Post;
-import com.example.scandaloussales.PostsAdapter;
+import com.example.scandaloussales.Adapters.PostsAdapter;
 import com.example.scandaloussales.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -25,34 +30,48 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostsFragment extends Fragment {
+import static com.parse.Parse.getApplicationContext;
+
+public class PostsFragment<menu> extends Fragment {
 
     public PostsFragment() {
         // Required empty public constructor
     }
 
+    ListView listView;
     private RecyclerView rvPosts;
     public static final String TAG = "PostsFragment";
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_posts, container, false);
+
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         rvPosts = view.findViewById(R.id.rvPosts);
         allPosts = new ArrayList<>();
         adapter = new PostsAdapter(getContext(), allPosts);
         rvPosts.setAdapter(adapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        listView = view.findViewById(R.id.list_view);
         queryPosts();
+
+
 
     }
 
@@ -66,12 +85,12 @@ public class PostsFragment extends Fragment {
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                if(e != null){
+                if (e != null) {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
 
-                for(Post post: posts){
+                for (Post post : posts) {
                     Log.i(TAG, "Post: " + post.getItemName() + ", price: " + post.getPrice() + ", upc " + post.getUpc() + ", username: " + post.getUser().getUsername());
                 }
                 allPosts.addAll(posts);
@@ -79,10 +98,11 @@ public class PostsFragment extends Fragment {
 
                 String objectID = "" + getId();
                 
+                rvPosts.setAdapter(adapter);
+
+
+
             }
         });
-
-
     }
-
 }

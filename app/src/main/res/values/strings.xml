@@ -3,4 +3,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
     <string name="google_maps_api_key">AIzaSyAOs1ZfxJMEto93jdhEHcJoyYRhzwz0iOo</string>
+    <string name="search">Search</string>
+    <string name="search_hint" />
+    <string name="app_label" />
 </resources>

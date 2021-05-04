@@ -1,5 +1,4 @@
-package com.example.scandaloussales;
-
+package com.example.scandaloussales.Adapters;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,16 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.scandaloussales.Post;
+import com.example.scandaloussales.R;
 import com.parse.ParseFile;
 
 import java.util.List;
 
-public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
+public class UserPostsAdapter extends RecyclerView.Adapter<UserPostsAdapter.ViewHolder> {
 
     private Context context;
     private List<Post> posts;
 
-    public PostsAdapter(Context context, List<Post> posts) {
+    public UserPostsAdapter(Context context, List<Post> posts) {
         this.context = context;
         this.posts = posts;
     }
@@ -50,7 +51,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvPrice;
         private TextView tvUpc;
         private TextView tvUsername;
-        //private TextView tvTimestamp;
         private ImageView ivImage;
 
         public ViewHolder(@NonNull View itemView) {
@@ -75,8 +75,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             if(image != null){
                 Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
             }
-
-
         }
     }
 

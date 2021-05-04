@@ -25,7 +25,4 @@
         app:itemTextColor="#FFFFFF"
         app:menu="@menu/menu_bottom_navigation" />
 
-
-
-
 </RelativeLayout>

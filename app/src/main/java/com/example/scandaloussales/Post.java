@@ -16,6 +16,9 @@ public class Post extends ParseObject {
     public static final String KEY_PRICE = "itemPrice";
     public static final String KEY_UPC = "upc";
 
+    public Post() {
+    }
+
     public String getItemName(){
         return getString(KEY_ITEM_NAME);
     }

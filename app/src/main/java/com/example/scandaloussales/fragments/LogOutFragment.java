@@ -1,7 +1,5 @@
 package com.example.scandaloussales.fragments;
 
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,11 +12,9 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.example.scandaloussales.Post;
 import com.example.scandaloussales.R;
-import com.example.scandaloussales.fragments.PostsFragment;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -26,13 +22,13 @@ import com.parse.ParseUser;
 
 import java.util.List;
 
-public class ProfileFragment extends PostsFragment {
+public class LogOutFragment extends PostsFragment {
 
     Button btnLogout;
     ImageView ivSort;
     public static final String TAG = "ProfileFragment";
 
-    public ProfileFragment() {
+    public LogOutFragment() {
         // Required empty public constructor
 
     }
@@ -42,12 +38,12 @@ public class ProfileFragment extends PostsFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.fragment_log_out, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+       // super.onViewCreated(view, savedInstanceState);
 
         btnLogout = view.findViewById(R.id.btnLogout);
         ivSort = view.findViewById(R.id.ivSort);
@@ -65,7 +61,7 @@ public class ProfileFragment extends PostsFragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        //   getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
+//          getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
 
     }
 

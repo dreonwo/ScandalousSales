@@ -16,9 +16,9 @@
         android:title="Compose"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_profile"
+        android:id="@+id/action_log_out"
         android:icon="@drawable/_5_1_512__1_"
-        android:title="Profile"
+        android:title="Log Out"
         android:visible="true"
         app:showAsAction="always" />
 </menu>

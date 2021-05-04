@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
+import com.example.scandaloussales.fragments.PostsFragment;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
@@ -19,6 +21,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class PostDetail extends AppCompatActivity {
 
     private SupportMapFragment mapFragment;
+    MainActivity ma = new MainActivity();
+    FragmentManager fragmentManager = ma.fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,7 @@ public class PostDetail extends AppCompatActivity {
             // listingPosition is a LatLng point
             LatLng listingPosition = new LatLng(-33.867, 151.206);
             // Create the marker on the fragment
-            Marker mapMarker = map.addMarker(new MarkerOptions()
+            Marker mapMarker = googleMap.addMarker(new MarkerOptions()
                     .position(listingPosition)
                     .title("Some title here")
                     .snippet("Some description here")
@@ -64,8 +68,7 @@ public class PostDetail extends AppCompatActivity {
     //allows user to press the back button after they view the post detail screen
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        fragmentManager.beginTransaction().replace(R.id.flContainer, new PostsFragment()).commit();
     }
 }
 
