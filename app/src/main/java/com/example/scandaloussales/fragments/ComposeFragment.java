@@ -13,7 +13,6 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
@@ -28,11 +27,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.example.scandaloussales.Post;
-import com.example.scandaloussales.MainActivity;
 import com.example.scandaloussales.Post;
 import com.example.scandaloussales.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -64,6 +61,7 @@ public class ComposeFragment extends Fragment {
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 47;
     private ImageView ivPostImage;
     private Button btnUploadImage;
+    private Button btnUploadUPC;
     private EditText etProductName;
     private EditText etPrice;
     private EditText etUPC;
@@ -100,6 +98,8 @@ public class ComposeFragment extends Fragment {
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnPost = view.findViewById(R.id.btnPost);
         btnUploadImage = view.findViewById(R.id.btnUploadImage);
+        //btnUploadUPC = view.findViewById(R.id.btnUploadUPC);
+
         btnLogout = view.findViewById(R.id.btnLogout);
         etProductName = view.findViewById(R.id.etProductName);
         etPrice = view.findViewById(R.id.etPrice);
@@ -108,6 +108,13 @@ public class ComposeFragment extends Fragment {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
 
         btnUploadImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchCamera();
+            }
+        });
+
+        btnUploadUPC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchCamera();

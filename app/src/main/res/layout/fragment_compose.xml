@@ -24,48 +24,49 @@
             android:textColor="#000000"
             android:textSize="14sp" />
 
-    <ImageView
-        android:id="@+id/ivPostImage"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_below="@+id/tvEnterDetails"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="133dp"
-        android:background="#FFFFFF"
-        android:visibility="visible"
-        app:srcCompat="@drawable/avatar_1" />
+        <ImageView
+            android:id="@+id/ivPostImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="#FFFFFF"
+            android:visibility="visible"
+            app:srcCompat="@drawable/avatar_1" />
+        <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+        -->
 
-    <Button
-        android:id="@+id/btnUploadImage"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_below="@+id/ivPostImage"
-        android:layout_alignParentStart="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="8dp"
-        android:background="#FFFFFF"
-        android:text="Upload Image" />
+        <Button
+            android:id="@+id/btnUploadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:text="Upload Image" />
 
+            <!--
+            <Button
+                android:id="@+id/btnUploadUPC"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="10dp"
+                android:background="#FFFFFF"
+                android:clickable="true"
+                android:text="Upload UPC" />
 
-    <EditText
-        android:id="@+id/etUPC"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etPrice"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="-7dp"
-        android:fontFamily="casual"
-        android:hint="UPC" />
+        </LinearLayout> -->
+
+        <EditText
+            android:id="@+id/etUPC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="casual"
+            android:hint="UPC" />
 
         <EditText
             android:id="@+id/etProductName"

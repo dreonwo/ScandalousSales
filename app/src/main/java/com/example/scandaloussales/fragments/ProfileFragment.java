@@ -60,6 +60,13 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        ivSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "onClick sort button");
+            }
+        });
+
 
     }
 

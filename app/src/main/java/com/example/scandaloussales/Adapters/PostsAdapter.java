@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -62,6 +63,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         //private TextView tvTimestamp;
         private ImageView ivImage;
 
+        private CardView cvPost;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvProductName = itemView.findViewById(R.id.tvProductName);
@@ -77,6 +80,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
             ivImage = itemView.findViewById(R.id.ivImage);
             //tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            cvPost = itemView.findViewById(R.id.cvPost);
         }
 
         public void bind(Post post) {
@@ -87,19 +91,37 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvProductName.setText(post.getItemName());
 
             tvUpc.setText(""  + post.getUpc());
+            //tvUpc.setVisibility(View.GONE);
+            //tvUpcLabel.setVisibility(View.GONE);
+            //tvUpcSign.setVisibility(View.GONE);
+
             tvUsername.setText(post.getUser().getUsername());
+
             // tvTimestamp.setText("" + post.getCreatedAt());
             ParseFile image = post.getImage();
             if(image != null){
                 Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
             }
 
-            tvUsername.setOnClickListener(new View.OnClickListener() {
+            /*
+            tvProductName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(context, PostDetail.class);
                     //i.putExtra("username", post.getUser().getUsername());
                     //i.putExtra("user", Parcels.wrap(post.getUser()));
+                    context.startActivity(i);
+                }
+            });
+            */
+
+
+            tvUsername.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, UserDetail.class);
+                    i.putExtra("username", post.getUser().getUsername());
+                    i.putExtra("user", Parcels.wrap(post.getUser()));
                     context.startActivity(i);
 
                 }
