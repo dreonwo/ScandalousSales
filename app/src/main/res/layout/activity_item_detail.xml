@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ItemDetail">
+
+    <ImageView
+        android:id="@+id/ivItemImage"
+        android:layout_width="161dp"
+        android:layout_height="170dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@+id/ivItemImage"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        tools:text="Product Name" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProductName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivItemImage"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        tools:text="Price" />
+
+    <TextView
+        android:id="@+id/tvUpc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPrice"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivItemImage"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        tools:text="UPC" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvUpc"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivItemImage"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        tools:text="Username" />
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_below="@+id/tvUsername"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="45dp"
+        app:cameraBearing="112.5"
+        app:cameraTargetLat="28.527383"
+        app:cameraTargetLng="-81.367578"
+        app:cameraTilt="30"
+        app:cameraZoom="13"
+        app:mapType="normal"
+        app:uiCompass="false"
+        app:uiRotateGestures="true"
+        app:uiScrollGestures="true"
+        app:uiTiltGestures="true"
+        app:uiZoomControls="false"
+        app:uiZoomGestures="true" />
+
+</RelativeLayout>

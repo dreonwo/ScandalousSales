@@ -7,17 +7,17 @@
      android:icon="@drawable/ic_baseline_person_24-->
     <item
         android:id="@+id/action_home"
-        android:icon="@drawable/home_512"
+        android:icon="@drawable/selector_home_bg"
         android:title="Home"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_compose"
-        android:icon="@drawable/pencil"
+        android:icon="@drawable/selector_post_bg"
         android:title="Compose"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_profile"
-        android:icon="@drawable/person"
+        android:icon="@drawable/selector_profile_bg"
         android:title="Log Out"
         app:showAsAction="always" />
 </menu>

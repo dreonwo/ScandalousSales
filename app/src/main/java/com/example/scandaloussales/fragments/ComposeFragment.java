@@ -81,7 +81,6 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
     FragmentManager fragmentManager;
     private File photoFile;
     public String photoFileName = "photo.jpg";
-    private FusedLocationProviderClient fusedLocationClient;
     private GoogleMap mMap;
     private double lng;
     private double lat;
@@ -116,8 +115,6 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
         etPrice = view.findViewById(R.id.etPrice);
         etUPC = view.findViewById(R.id.etUPC);
         mScrollView = view.findViewById(R.id.scrollMap); //parent scrollview in xml, give your scrollview id value
-
-        fusedLocationClient = getFusedLocationProviderClient(getContext());
 
         mapFragment = ((SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map));
 
@@ -162,16 +159,6 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
             }
         });
 
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
 
     }
 
