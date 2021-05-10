@@ -74,11 +74,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvPrice = itemView.findViewById(R.id.tvPrice);
 
             tvUpc = itemView.findViewById(R.id.tvUPC);
-            tvUpcLabel = itemView.findViewById(R.id.tvUPCLabel);
-            tvUpcSign = itemView.findViewById(R.id.tvUPCSign);
 
             tvUsername = itemView.findViewById(R.id.tvUsername);
-            tvUsernameLabel = itemView.findViewById(R.id.tvUsernameLabel);
 
             ivImage = itemView.findViewById(R.id.ivImage);
             //tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
@@ -88,13 +85,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         public void bind(Post post) {
             Log.d("PostsAdapter", post.toString());
 
-            tvPrice.setText("" + post.getPrice());
+            tvPrice.setText("Price: $" + post.getPrice());
 
-            tvProductName.setText(post.getItemName());
+            tvProductName.setText("Item: " + post.getItemName());
 
-            tvUpc.setText(""  + post.getUpc());
+            tvUpc.setText("UPC: #"  + post.getUpc());
 
-            tvUsername.setText(post.getUser().getUsername());
+            tvUsername.setText("Username: " + post.getUser().getUsername());
 
             // tvTimestamp.setText("" + post.getCreatedAt());
 
