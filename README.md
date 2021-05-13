@@ -37,7 +37,6 @@ A price comparison app sourced by its community used to display electronic produ
 **Optional Nice-to-have Stories**
 * User can sort search results by lowest price, highest price or newest scans.
 * User can edit their post after creating it.
-* [x] Have search bar on main page 
 * Users can rate other users
 
 
@@ -76,11 +75,11 @@ A price comparison app sourced by its community used to display electronic produ
     * Camera
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="main_screen.png" width=600>
-<img src="item_screen.png" width=600>
+<img src="ScandalousSales_Login_Register.gif" width=600>
+<img src="ScandalousSales_View_List.gif" width=600>
+<img src ="ScandalousSales_Profile.gif" width =600 >
 
 ### [BONUS] Interactive Prototype
 
