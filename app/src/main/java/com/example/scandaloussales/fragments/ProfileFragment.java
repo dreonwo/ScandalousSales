@@ -22,6 +22,7 @@ import com.example.scandaloussales.Adapters.UserPostsAdapter;
 import com.example.scandaloussales.LoginActivity;
 import com.example.scandaloussales.Post;
 import com.example.scandaloussales.R;
+import com.example.scandaloussales.TimeFormatter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -43,7 +44,7 @@ public class ProfileFragment extends PostsFragment {
     TextView tvFirstName;
     TextView tvLastName;
     TextView tvUsername;
-    Post post;
+    TextView tvJoinedAt;
 
 
     public ProfileFragment() {
@@ -68,7 +69,7 @@ public class ProfileFragment extends PostsFragment {
         tvLastName = view.findViewById(R.id.tvLastName);
         tvUsername = view.findViewById(R.id.tvUsername);
         rvProfile = view.findViewById(R.id.rvProfile);
-        post = new Post();
+        tvJoinedAt = view.findViewById(R.id.tvJoinedAt);
         allPosts = new ArrayList<>();
         adapter = new ProfileAdapter(getContext(), allPosts);
         rvProfile.setAdapter(adapter);
@@ -77,6 +78,7 @@ public class ProfileFragment extends PostsFragment {
         tvFirstName.setText(""+ParseUser.getCurrentUser().get("firstName"));
         tvLastName.setText(""+ParseUser.getCurrentUser().get("lastName"));
         tvUsername.setText("@"+ParseUser.getCurrentUser().getUsername());
+        tvJoinedAt.setText("Joined: " + TimeFormatter.getTimeStamp(ParseUser.getCurrentUser().getCreatedAt().toString()));
 
         queryPosts();
 

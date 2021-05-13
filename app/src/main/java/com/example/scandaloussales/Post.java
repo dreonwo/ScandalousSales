@@ -41,7 +41,7 @@ public class Post extends ParseObject {
         return getParseUser(KEY_USER);
     }
 
-    public Date getCreatedAt(){ return getDate(KEY_CREATED_KEY); }
+    public String getCreatedAtTime(){ return TimeFormatter.getTimeStamp(getDate(KEY_CREATED_KEY).toString()); }
 
     public void setUser(ParseUser user){
         put(KEY_USER, user);
@@ -58,5 +58,6 @@ public class Post extends ParseObject {
     }
 
     public void setUpc(long upc){put(KEY_UPC, upc);}
+
 
 }

@@ -62,7 +62,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvUpcSign;
         private TextView tvUsername;
         private TextView tvUsernameLabel;
-        //private TextView tvTimestamp;
+        private TextView tvCreatedAt;
         private ImageView ivImage;
 
         private CardView cvPost;
@@ -78,7 +78,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvUsername = itemView.findViewById(R.id.tvUsername);
 
             ivImage = itemView.findViewById(R.id.ivImage);
-            //tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
             cvPost = itemView.findViewById(R.id.cvPost);
         }
 
@@ -93,7 +93,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
             tvUsername.setText("Username: " + post.getUser().getUsername());
 
-            // tvTimestamp.setText("" + post.getCreatedAt());
+            tvCreatedAt.setText("" + post.getCreatedAt());
 
             Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
 
