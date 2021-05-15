@@ -16,17 +16,6 @@
         android:layout_margin="8dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvEnterDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="casual"
-            android:text="Enter product details:"
-            android:textColor="#000000"
-            android:textSize="14sp" />
-
         <ImageView
             android:id="@+id/ivPostImage"
             android:layout_width="match_parent"
@@ -50,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:fontFamily="casual"
+            android:fontFamily="serif"
             android:hint="UPC" />
 
         <EditText
@@ -58,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
-            android:fontFamily="casual"
+            android:fontFamily="serif"
             android:hint="Product Name" />
 
         <EditText
@@ -66,17 +55,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
-            android:fontFamily="casual"
+            android:fontFamily="serif"
             android:hint="Price" />
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:gravity="start|top"
+            android:hint="Description"
+            android:inputType="textMultiLine" />
 
         <TextView
             android:id="@+id/tvLocationDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:fontFamily="casual"
+            android:fontFamily="serif"
             android:text="Location of Item:"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="20sp"
             android:textStyle="bold" />
 

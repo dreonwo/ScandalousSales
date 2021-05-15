@@ -15,6 +15,7 @@ public class Post extends ParseObject {
     public static final String KEY_CREATED_KEY = "createdAt";
     public static final String KEY_PRICE = "itemPrice";
     public static final String KEY_UPC = "upc";
+    public static final String KEY_DESC = "description";
     public static final String KEY_LAT = "latitude";
     public static final String KEY_LONG = "longitude";
 
@@ -58,6 +59,10 @@ public class Post extends ParseObject {
     }
 
     public void setUpc(long upc){put(KEY_UPC, upc);}
+
+    public String getDesc(){ return getString(KEY_DESC);}
+
+    public void setDesc(String desc){ put(KEY_DESC, desc);}
 
 
 }

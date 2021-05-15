@@ -76,8 +76,8 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
     private EditText etProductName;
     private EditText etPrice;
     private EditText etUPC;
-    private Button btnLogout;
     private Button btnPost;
+    private EditText etDescription;
     FragmentManager fragmentManager;
     private File photoFile;
     public String photoFileName = "photo.jpg";
@@ -110,10 +110,10 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnPost = view.findViewById(R.id.btnPost);
         btnUploadImage = view.findViewById(R.id.btnUploadImage);
-        btnLogout = view.findViewById(R.id.btnLogout);
         etProductName = view.findViewById(R.id.etProductName);
         etPrice = view.findViewById(R.id.etPrice);
         etUPC = view.findViewById(R.id.etUPC);
+        etDescription = view.findViewById(R.id.etDescription);
         mScrollView = view.findViewById(R.id.scrollMap); //parent scrollview in xml, give your scrollview id value
 
         mapFragment = ((SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map));
@@ -133,6 +133,7 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
                 String itemName = etProductName.getText().toString();
                 int price = Integer.parseInt(etPrice.getText().toString());
                 long upc = Long.parseLong(etUPC.getText().toString());
+                String desc = etDescription.getText().toString();
 
                 if (itemName.isEmpty() || etPrice.getText().toString().isEmpty() || etUPC.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "All Boxes must be filled", Toast.LENGTH_SHORT).show();
@@ -151,11 +152,11 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
                 }
 
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(itemName, price, upc, currentUser, photoFile, lat, lng);
+                savePost(itemName, price, upc, currentUser, photoFile, lat, lng, desc);
 
                 Toast.makeText(getContext(), "Post Successfully Created", Toast.LENGTH_SHORT).show();
 
-                fragmentManager.beginTransaction().replace(R.id.flContainer, new PostsFragment()).commit();
+                //fragmentManager.beginTransaction().replace(R.id.flContainer, new PostsFragment()).commit();
             }
         });
 
@@ -218,11 +219,12 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
         }
     }
 
-    private void savePost(String name, int price, long upc, ParseUser currentUser, File photoFile, double latitude, double longitude) {
+    private void savePost(String name, int price, long upc, ParseUser currentUser, File photoFile, double latitude, double longitude, String desc) {
         Post post = new Post();
         post.setItemName(name);
         post.setPrice(price);
         post.setUpc(upc);
+        post.setDesc(desc);
         post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
         post.put("latitude", latitude);
@@ -239,6 +241,7 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
                 etProductName.setText("");
                 etPrice.setText("");
                 etUPC.setText("");
+                etDescription.setText("");
                 ivPostImage.setImageResource(0);
             }
         });

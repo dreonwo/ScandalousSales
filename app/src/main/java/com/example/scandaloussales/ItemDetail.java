@@ -12,6 +12,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ public class ItemDetail extends AppCompatActivity implements OnMapReadyCallback 
     TextView tvPrice;
     TextView tvUpc;
     TextView tvUsername;
+    EditText etDescription;
     ImageView ivItemImage;
     SupportMapFragment mapFragment;
     private GoogleMap mMap;
@@ -60,6 +62,7 @@ public class ItemDetail extends AppCompatActivity implements OnMapReadyCallback 
         tvPrice = findViewById(R.id.tvPrice);
         tvUpc = findViewById(R.id.tvUpc);
         tvUsername = findViewById(R.id.tvUsername);
+        etDescription = findViewById(R.id.etDescription);
         ivItemImage = findViewById(R.id.ivItemImage);
         Glide.with(this).load(post.getImage().getUrl()).into(ivItemImage);
 
@@ -71,6 +74,7 @@ public class ItemDetail extends AppCompatActivity implements OnMapReadyCallback 
         tvPrice.setText(""+post.getPrice());
         tvUpc.setText(""+post.getUpc());
         tvUsername.setText(post.getUser().getUsername());
+        etDescription.setText(post.getDesc());
 
     }
 
