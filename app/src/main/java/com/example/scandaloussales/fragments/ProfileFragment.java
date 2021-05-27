@@ -1,6 +1,7 @@
 package com.example.scandaloussales.fragments;
 
 import android.content.Intent;
+import android.icu.text.DateFormat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,7 +79,7 @@ public class ProfileFragment extends PostsFragment {
         tvFirstName.setText(""+ParseUser.getCurrentUser().get("firstName"));
         tvLastName.setText(""+ParseUser.getCurrentUser().get("lastName"));
         tvUsername.setText("@"+ParseUser.getCurrentUser().getUsername());
-        tvJoinedAt.setText("Joined: " + TimeFormatter.getTimeStamp(ParseUser.getCurrentUser().getCreatedAt().toString()));
+        tvJoinedAt.setText("Joined: " + DateFormat.getDateInstance().format(ParseUser.getCurrentUser().getCreatedAt()));
 
         queryPosts();
 

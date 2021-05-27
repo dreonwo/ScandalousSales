@@ -7,11 +7,14 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,6 +47,7 @@ public class ItemDetail extends AppCompatActivity implements OnMapReadyCallback 
     TextView tvUsername;
     EditText etDescription;
     ImageView ivItemImage;
+    Button backBtn;
     SupportMapFragment mapFragment;
     private GoogleMap mMap;
     private static final int REQUEST_FINE_LOCATION = 200;
@@ -56,6 +60,8 @@ public class ItemDetail extends AppCompatActivity implements OnMapReadyCallback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
 
+        getSupportActionBar().hide();
+
         post = Parcels.unwrap(getIntent().getParcelableExtra("post"));
 
         tvProductName =findViewById(R.id.tvProductName);
@@ -63,6 +69,7 @@ public class ItemDetail extends AppCompatActivity implements OnMapReadyCallback 
         tvUpc = findViewById(R.id.tvUpc);
         tvUsername = findViewById(R.id.tvUsername);
         etDescription = findViewById(R.id.etDescription);
+        backBtn = findViewById(R.id.backBtn);
         ivItemImage = findViewById(R.id.ivItemImage);
         Glide.with(this).load(post.getImage().getUrl()).into(ivItemImage);
 
@@ -75,6 +82,13 @@ public class ItemDetail extends AppCompatActivity implements OnMapReadyCallback 
         tvUpc.setText(""+post.getUpc());
         tvUsername.setText(post.getUser().getUsername());
         etDescription.setText(post.getDesc());
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

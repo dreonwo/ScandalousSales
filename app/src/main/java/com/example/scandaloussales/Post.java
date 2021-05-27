@@ -42,8 +42,6 @@ public class Post extends ParseObject {
         return getParseUser(KEY_USER);
     }
 
-    public String getCreatedAtTime(){ return TimeFormatter.getTimeStamp(getDate(KEY_CREATED_KEY).toString()); }
-
     public void setUser(ParseUser user){
         put(KEY_USER, user);
     }
@@ -54,8 +52,8 @@ public class Post extends ParseObject {
 
     public void setPrice(int price){ put(KEY_PRICE,price);}
 
-    public int getUpc() {
-        return getInt(KEY_UPC);
+    public Long getUpc() {
+        return getLong(KEY_UPC);
     }
 
     public void setUpc(long upc){put(KEY_UPC, upc);}

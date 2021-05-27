@@ -2,6 +2,7 @@ package com.example.scandaloussales.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.scandaloussales.Post;
 import com.example.scandaloussales.R;
 import com.example.scandaloussales.UserDetail;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import org.parceler.Parcel;
 import org.parceler.Parcels;
@@ -29,6 +31,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     private Context context;
     private List<Post> posts;
+    public static final String tag = "PostsAdapter";
 
     public PostsAdapter(Context context, List<Post> posts) {
         this.context = context;
@@ -89,11 +92,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
             tvProductName.setText("Item: " + post.getItemName());
 
-            tvUpc.setText("UPC: #"  + post.getUpc());
+            tvUpc.setText("UPC: "  + post.getUpc());
 
             tvUsername.setText("Username: " + post.getUser().getUsername());
 
-            tvCreatedAt.setText("" + post.getCreatedAt());
+            tvCreatedAt.setText("" + DateFormat.getDateInstance().format(post.getCreatedAt()));
 
             Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
 

@@ -61,6 +61,7 @@ import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.io.Console;
 import java.io.File;
 
 import static android.app.Activity.RESULT_OK;
@@ -133,6 +134,7 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
                 String itemName = etProductName.getText().toString();
                 int price = Integer.parseInt(etPrice.getText().toString());
                 long upc = Long.parseLong(etUPC.getText().toString());
+                Log.d(TAG, "Product " + itemName + " " + upc);
                 String desc = etDescription.getText().toString();
 
                 if (itemName.isEmpty() || etPrice.getText().toString().isEmpty() || etUPC.getText().toString().isEmpty()) {
@@ -142,7 +144,7 @@ public class ComposeFragment extends Fragment implements OnMapReadyCallback{
 
                 //added upc length checker. upcs are always 12 numbers long.
                 if (etUPC.getText().toString().length() != 12) {
-                    Toast.makeText(getContext(), "UPC must be 12 numbers long. You have " + etUPC.getText().toString().length() + " characters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "UPC must be 12 digits long. You have " + etUPC.getText().toString().length() + " characters", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
