@@ -62,5 +62,9 @@ public class Post extends ParseObject {
 
     public void setDesc(String desc){ put(KEY_DESC, desc);}
 
+    public String getFormattedTimeDifference(){
+        return TimeFormatter.getTimeDifference(getCreatedAt().toString());
+    }
+
 
 }

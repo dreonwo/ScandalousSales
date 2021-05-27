@@ -4,15 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/teal_200"
     tools:context=".UserDetail">
 
     <TextView
-        android:id="@+id/tvPosts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="0dp"
+        android:fontFamily="cursive"
+        android:text="Scandalous Sales"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/abc_vector_test" />
+
+    <TextView
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:fontFamily="casual"
+        android:layout_marginTop="55dp"
+        android:fontFamily="serif"
         android:text="User's Posts:"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -20,11 +41,10 @@
         android:id="@+id/rvDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tvPosts"
+        android:layout_below="@id/tvName"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp" />
-
 
 
 </RelativeLayout>

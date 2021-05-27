@@ -71,9 +71,9 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         public void bind(Post post) {
             Log.d("PostsAdapter", post.toString());
 
-            tvPrice.setText("" + post.getPrice());
+            tvPrice.setText("Price $" + post.getPrice());
             tvProductName.setText(post.getItemName());
-            tvUpc.setText(""  + post.getUpc());
+            tvUpc.setText("UPC: "  + post.getUpc());
             tvUsername.setText(post.getUser().getUsername());
             // tvTimestamp.setText("" + post.getCreatedAt());
             ParseFile image = post.getImage();

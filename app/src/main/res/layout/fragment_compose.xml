@@ -35,14 +35,6 @@
 
 
         <EditText
-            android:id="@+id/etUPC"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:fontFamily="serif"
-            android:hint="UPC" />
-
-        <EditText
             android:id="@+id/etProductName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,6 +49,14 @@
             android:layout_marginStart="3dp"
             android:fontFamily="serif"
             android:hint="Price" />
+
+        <EditText
+            android:id="@+id/etUPC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="serif"
+            android:hint="UPC" />
 
         <EditText
             android:id="@+id/etDescription"
