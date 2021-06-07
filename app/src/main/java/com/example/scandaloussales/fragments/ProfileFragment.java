@@ -46,11 +46,10 @@ public class ProfileFragment extends PostsFragment {
     TextView tvLastName;
     TextView tvUsername;
     TextView tvJoinedAt;
-
+    TextView tvPosts;
 
     public ProfileFragment() {
         // Required empty public constructor
-
     }
 
 
@@ -71,6 +70,7 @@ public class ProfileFragment extends PostsFragment {
         tvUsername = view.findViewById(R.id.tvUsername);
         rvProfile = view.findViewById(R.id.rvProfile);
         tvJoinedAt = view.findViewById(R.id.tvJoinedAt);
+        tvPosts = view.findViewById(R.id.tvPosts);
         allPosts = new ArrayList<>();
         adapter = new ProfileAdapter(getContext(), allPosts);
         rvProfile.setAdapter(adapter);
@@ -115,6 +115,11 @@ public class ProfileFragment extends PostsFragment {
         query.setLimit(20);
         query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
         query.addDescendingOrder(Post.KEY_CREATED_KEY);
+        try {
+            tvPosts.setText("Posts made: " + query.count());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         query.findInBackground(new FindCallback<Post>() {
             @Override

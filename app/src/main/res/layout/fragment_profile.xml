@@ -66,14 +66,15 @@
         android:id="@+id/rvProfile"
         android:layout_width="match_parent"
         android:layout_height="490dp"
-        android:layout_below="@+id/tvUsername"
+        android:layout_below="@+id/tvPosts"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/teal_200"
-        />
+        android:layout_marginBottom="-28dp"
+        android:background="@color/teal_200" />
 
     <TextView
         android:id="@+id/tvJoinedAt"
@@ -86,6 +87,18 @@
         android:textColor="#ffffff"
         android:textSize="24sp"
         tools:text="Joined At" />
+
+    <TextView
+        android:id="@+id/tvPosts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvUsername"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="20dp"
+        android:text="Posts Made"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>
